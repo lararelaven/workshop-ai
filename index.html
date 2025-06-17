@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="sv" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Workshop: Från Prompt till Pedagogik</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Pedagogisk Harmoni -->
+    <!-- Application Structure Plan: A single-page, scrolling application designed to mirror the workshop's narrative flow. It starts with a hero section outlining the goals, followed by a Donut chart visualizing the main exercises. Each exercise is presented in its own dedicated section using a card-based layout for clarity. The structure progresses from simple warm-ups to the final, complex task (LEKTION-ramverket), guiding the user logically through the material. This linear, content-driven structure was chosen for its intuitiveness and ease of consumption, making it an ideal digital companion or summary of the workshop. -->
+    <!-- Visualization & Content Choices: 1. Workshop Structure: Goal: Organize. Method: Chart.js Donut chart to provide a quick visual overview of the 8 main exercises. 2. Iterative Process (Sago-generatorn): Goal: Organize/Change. Method: A step-by-step visual flow created with styled HTML/CSS to demonstrate the iterative nature of prompting. 3. Exercises: Goal: Inform/Compare. Method: Card-based layouts using styled divs to present each exercise's purpose, instructions, and examples clearly. 4. Prompt Examples: Goal: Inform. Method: Styled <pre><code> blocks with a distinct background to make prompts easy to read and copy. 5. Interactive Accordion: Goal: Organize/Inform. Method: HTML/CSS/JS to create a clickable accordion for program-specific examples, keeping the UI clean and allowing users to explore relevant content on demand. This design prioritizes clarity, readability, and a logical progression, using Canvas for the main chart and structured HTML/CSS for all other visual elements. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8f9fa;
+        }
+        .prompt-block {
+            background-color: #e9ecef;
+            border-left: 4px solid #4a5568;
+            color: #212529;
+            white-space: pre-wrap;
+            word-break: break-word;
+        }
+        .chart-container {
+            position: relative;
+            margin: auto;
+            height: 350px;
+            width: 100%;
+            max-width: 400px;
+        }
+        h2.section-title {
+            border-bottom: 2px solid #6c757d;
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+        }
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+        .accordion-button.active .arrow {
+            transform: rotate(180deg);
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <div class="container mx-auto max-w-5xl p-4 sm:p-8">
+
+        <header class="text-center my-8 md:my-12">
+            <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Workshop: Från Prompt till Pedagogik</h1>
+            <p class="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">En interaktiv guide för att bemästra AI i klassrummet – från första prompten till färdigt lektionsmaterial.</p>
+        </header>
+
+        <section id="goals" class="my-12">
+            <div class="bg-white rounded-2xl shadow-lg p-8">
+                <h2 class="text-2xl md:text-3xl font-bold text-center text-gray-900" style="border-bottom: none; justify-content: center;">Dagens Mål</h2>
+                <div class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-6 text-center">
+                    <div class="bg-blue-50 p-4 rounded-lg">
+                        <p class="font-semibold text-blue-800">🧠 Förstå grunderna i att "prompta"</p>
+                    </div>
+                    <div class="bg-green-50 p-4 rounded-lg">
+                        <p class="font-semibold text-green-800">💡 Uppleva AI:ns kreativa och praktiska potential</p>
+                    </div>
+                    <div class="bg-yellow-50 p-4 rounded-lg">
+                        <p class="font-semibold text-yellow-800">📚 Skapa konkret och användbart lektionsmaterial</p>
+                    </div>
+                    <div class="bg-purple-50 p-4 rounded-lg">
+                        <p class="font-semibold text-purple-800">🚀 Gå härifrån med nya verktyg och mindre oro</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="overview" class="my-16">
+            <h2 class="text-2xl md:text-3xl text-center" style="border-bottom: none; justify-content: center;">Workshopens Åtta Huvudövningar</h2>
+            <div class="chart-container mt-8">
+                <canvas id="workshopStructureChart"></canvas>
+            </div>
+             <p class="text-center text-gray-500 mt-4 italic">En översikt av de praktiska momenten som bygger kunskap steg-för-steg.</p>
+        </section>
+
+        <section id="exercise1" class="my-16">
+            <h2 class="section-title text-2xl md:text-3xl"><span class="bg-gray-700 text-white rounded-full h-10 w-10 flex items-center justify-center flex-shrink-0 mr-4">1</span>Övning 1: Uppvärmnings-buffé</h2>
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <p class="font-semibold">Syfte:</p>
+                <p class="mb-4">Att snabbt och varierat testa AI:ns förmåga att hantera olika kreativa begränsningar, roller och perspektiv.</p>
+                <p class="font-semibold">Instruktion:</p>
+                <p class="mb-6">Välj en av följande tre snabba uppvärmningsövningar. Arbeta gärna i par.</p>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="border border-gray-200 rounded-lg p-4 flex flex-col"><h3 class="font-bold text-lg mb-2">A) Haiku-mästaren</h3><p class="text-sm text-gray-600 mb-4 flex-grow">Se hur AI hanterar strikta kreativa ramar (5-7-5 stavelser).</p><p class="font-semibold text-sm">Exempel:</p><pre class="prompt-block p-3 rounded text-sm my-2"><code>Skriv en haiku om kaffe.</code></pre><pre class="prompt-block p-3 rounded text-sm my-2"><code>Gör den mer melankolisk.</code></pre><p class="font-semibold text-sm mt-4">Fler ämnen att testa:</p><div class="grid grid-cols-2 gap-2 mt-2 text-sm"><pre class="prompt-block p-2 rounded"><code>Nyfött barn</code></pre><pre class="prompt-block p-2 rounded"><code>Öl</code></pre><pre class="prompt-block p-2 rounded"><code>Sommarregn</code></pre><pre class="prompt-block p-2 rounded"><code>Måndag morgon</code></pre><pre class="prompt-block p-2 rounded"><code>Fikapaus</code></pre><pre class="prompt-block p-2 rounded"><code>En deadline</code></pre><pre class="prompt-block p-2 rounded"><code>Fotboll</code></pre><pre class="prompt-block p-2 rounded"><code>Tomt klassrum</code></pre><pre class="prompt-block p-2 rounded"><code>Kärlek</code></pre><pre class="prompt-block p-2 rounded"><code>En vän</code></pre><pre class="prompt-block p-2 rounded"><code>Tystnad</code></pre><pre class="prompt-block p-2 rounded"><code>Havet</code></pre><pre class="prompt-block p-2 rounded"><code>En dröm</code></pre></div></div>
+                    <div class="border border-gray-200 rounded-lg p-4 flex flex-col"><h3 class="font-bold text-lg mb-2">B) Den osannolika jobbannonsen</h3><p class="text-sm text-gray-600 mb-4 flex-grow">Träna på att ge AI:n en specifik roll och tydliga krav.</p><p class="font-semibold text-sm">Exempel 1:</p><pre class="prompt-block p-3 rounded text-sm my-2"><code>Skriv en jobbannons där Pippi Långstrump söker en ny "sakletare".</code></pre><pre class="prompt-block p-3 rounded text-sm my-2"><code>Gör om den till ett "peppigt" inlägg för LinkedIn.</code></pre><p class="font-semibold text-sm mt-4">Exempel 2:</p><pre class="prompt-block p-3 rounded text-sm my-2"><code>Skriv en platsannons där Sherlock Holmes söker en ny assistent. Kvalifikationer: skarp observationsförmåga och hög tolerans för excentriskt beteende.</code></pre><pre class="prompt-block p-3 rounded text-sm my-2"><code>Skriv om annonsen så den låter som en kontaktannons.</code></pre><p class="font-semibold text-sm mt-4">Exempel 3:</p><pre class="prompt-block p-3 rounded text-sm my-2"><code>Agera rekryterare åt Ronja Rövardotter. Skapa en annons för en ny "rövarsyster" eller "rövarbror" till Mattisborgen.</code></pre><pre class="prompt-block p-3 rounded text-sm my-2"><code>Skriv om annonsen som om den vore en broschyr för en äventyrsresa.</code></pre></div>
+                    <div class="border border-gray-200 rounded-lg p-4 flex flex-col"><h3 class="font-bold text-lg mb-2">C) Expert-panelen</h3><p class="text-sm text-gray-600 mb-4 flex-grow">Uppleva hur AI kan generera olika perspektiv på samma fråga.</p><p class="font-semibold text-sm">Exempel 1:</p><pre class="prompt-block p-3 rounded text-sm my-2"><code>Hur skapar jag ett prov som är både rättvist och mäter djupare förståelse? Svara som en erfaren pedagogisk forskare.</code></pre><pre class="prompt-block p-3 rounded text-sm my-2"><code>Svara nu på samma fråga, men som en pragmatisk och tidspressad lärare som vill ha konkreta tips.</code></pre><p class="font-semibold text-sm mt-4">Exempel 2:</p><pre class="prompt-block p-3 rounded text-sm my-2"><code>Hur hanterar jag en situation där en elevs motivation är på botten? Svara som en skolkurator med fokus på empati.</code></pre><pre class="prompt-block p-3 rounded text-sm my-2"><code>Svara nu som en resultatinriktad idrottscoach.</code></pre><p class="font-semibold text-sm mt-4">Exempel 3:</p><pre class="prompt-block p-3 rounded text-sm my-2"><code>Hur ger jag feedback som är både ärlig och uppmuntrande? Svara som en retorikkonsult.</code></pre><pre class="prompt-block p-3 rounded text-sm my-2"><code>Svara nu på samma fråga, men som en erfaren psykolog specialiserad på "growth mindset".</code></pre></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="exercise2" class="my-16">
+            <h2 class="section-title text-2xl md:text-3xl"><span class="bg-gray-700 text-white rounded-full h-10 w-10 flex items-center justify-center flex-shrink-0 mr-4">2</span>Övning 2: Sago-generatorn</h2>
+            <div class="bg-white p-6 rounded-lg shadow-md"><p class="font-semibold">Syfte:</p><p class="mb-4">Att förstå iterativ promptning – att bygga vidare på en idé steg-för-steg.</p><p class="font-semibold">Instruktion:</p><p class="mb-6">Följ stegen för att skapa och förvandla en saga.</p><div class="space-y-8"><div class="flex items-start"><div class="h-8 w-8 rounded-full bg-gray-700 text-white flex items-center justify-center font-bold flex-shrink-0 mr-4">1</div><div><h3 class="font-bold">Skapa sagan</h3><p class="text-sm text-gray-600 mb-2">Börja med en grundläggande idé och ge AI:n alla viktiga detaljer.</p><pre class="prompt-block p-3 rounded text-sm"><code>Kan du skriva en kort saga till min systerson, han fyller fem år. Wilhelm gillar verkligen Lego och lyftkranar, kan du få med det? Och inte för lång. 150 ord räcker.</code></pre></div></div><div class="flex items-start"><div class="h-8 w-8 rounded-full bg-gray-700 text-white flex items-center justify-center font-bold flex-shrink-0 mr-4">2</div><div><h3 class="font-bold">Öka komplexiteten</h3><p class="text-sm text-gray-600 mb-2">Lägg till nya element och be AI:n att integrera dem i den befintliga berättelsen.</p><pre class="prompt-block p-3 rounded text-sm"><code>Helt fantastiskt. Tack så mycket. Det behövs en helikopter också. Och det vore bra om lyftkranen fick plåster.</code></pre></div></div><div class="flex items-start"><div class="h-8 w-8 rounded-full bg-gray-700 text-white flex items-center justify-center font-bold flex-shrink-0 mr-4">3</div><div><h3 class="font-bold">Ändra stilen</h3><p class="text-sm text-gray-600 mb-2">Behåll innehållet men be AI:n att anta en specifik författarstil.</p><pre class="prompt-block p-3 rounded text-sm"><code>Härligt. Du är nu HC Andersen. Skriv sagan igen.</code></pre></div></div><div class="flex items-start"><div class="h-8 w-8 rounded-full bg-gray-700 text-white flex items-center justify-center font-bold flex-shrink-0 mr-4">4</div><div><h3 class="font-bold">Spåra ur</h3><p class="text-sm text-gray-600 mb-2">Testa AI:ns kreativa gränser med helt oväntade kombinationer.</p><pre class="prompt-block p-3 rounded text-sm"><code>Jättesnällt. Du är fortfarande HC Andersen. Men hur skulle du skrivit sagan om du precis hade sett Star Wars och älskat den?</code></pre></div></div></div></div>
+        </section>
+
+        <section id="exercise3" class="my-16">
+            <h2 class="section-title text-2xl md:text-3xl"><span class="bg-gray-700 text-white rounded-full h-10 w-10 flex items-center justify-center flex-shrink-0 mr-4">3</span>Övning 3: Tal-verkstaden</h2>
+             <div class="bg-white p-6 rounded-lg shadow-md"><p class="font-semibold">Syfte:</p><p class="mb-4">Anpassa en text för en specifik ton och målgrupp.</p><p class="font-semibold">Instruktion:</p><p class="mb-6">Arbeta i par. Intervjua varandra och använd sedan AI för att skapa och förfina ett tacktal till din kollega.</p><div><h3 class="font-semibold mb-2">Exempel på startprompt:</h3><pre class="prompt-block p-3 rounded text-sm"><code>Skriv ett kort, varmt och humoristiskt tacktal till min kollega [Namn]. Hen är [ämne]-lärare och är otroligt bra på [specifik egenskap]...</code></pre></div><div class="mt-4"><h3 class="font-semibold mb-2">Exempel på förfiningsprompter:</h3><div class="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-2 text-sm"><pre class="prompt-block p-2 rounded"><code>Gör det ännu roligare.</code></pre><pre class="prompt-block p-2 rounded"><code>Sammanfatta talets kärna som en limerick.</code></pre><pre class="prompt-block p-2 rounded"><code>Väva in ett känt citat om [ämnet].</code></pre><pre class="prompt-block p-2 rounded"><code>Lägg till en överdriven liknelse.</code></pre><pre class="prompt-block p-2 rounded"><code>Skriv om det så att det passar som en motivering för ett lönelyft.</code></pre><pre class="prompt-block p-2 rounded"><code>Gör det kortare, max 50 ord.</code></pre><pre class="prompt-block p-2 rounded"><code>Gör det mer högtidligt och formellt.</code></pre><pre class="prompt-block p-2 rounded"><code>Lägg till en uppmaning till publiken.</code></pre></div></div></div>
+        </section>
+
+        <section id="exercise4" class="my-16">
+            <h2 class="section-title text-2xl md:text-3xl"><span class="bg-gray-700 text-white rounded-full h-10 w-10 flex items-center justify-center flex-shrink-0 mr-4">4</span>Övning 4: Text-transformatorn</h2>
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <p class="mb-4">I den här praktiska övningen får du chansen att utforska hur en språkmodell som ChatGPT kan användas som en kreativ partner för att utveckla, analysera och omforma texter. Målet är inte att hitta ett "rätt" svar, utan att uppleva och reflektera över de möjligheter som tekniken erbjuder i din yrkesroll.</p>
+                <div class="space-y-6">
+                    <div>
+                        <h3 class="font-bold text-lg mb-2">Steg 1: Välj din text</h3>
+                        <p class="mb-2">Börja med att välja en text som är relevant för din undervisning eller ditt arbete. Det kan vara något du själv har skrivit eller material du använder i klassrummet.</p>
+                        <p class="font-semibold text-sm">Förslag på texter:</p>
+                        <ul class="list-disc list-inside text-sm text-gray-700 mt-2 space-y-1">
+                            <li>En lektionsplanering</li><li>Instruktioner till en inlämningsuppgift</li><li>Ett informationsmejl till elever eller vårdnadshavare</li><li>En sammanfattning av ett kursmoment</li><li>Ett utkast till provfrågor</li><li>En faktatext eller artikel som ni ska arbeta med</li><li>Din egen skriftliga feedback på en elevuppgift</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-lg mb-2">Steg 2: Ge AI:n kontext</h3>
+                        <p class="mb-2">Inled med att beskriva texten för AI:n. Förklara vad det är för typ av text, vem den är skriven för (målgruppen) och vilket syfte den har. Ju bättre kontext du ger, desto mer relevanta blir svaren.</p>
+                        <pre class="prompt-block p-3 rounded text-sm"><code>Här är instruktionerna till en uppgift i Svenska 1 där eleverna ska analysera en dikt. Målgruppen är gymnasieelever, 16-17 år gamla.</code></pre>
+                    </div>
+                     <div>
+                        <h3 class="font-bold text-lg mb-2">Steg 3: Experimentera med promptar</h3>
+                        <p class="mb-2">Nu börjar det roliga! Be AI:n att förändra din text med hjälp av olika instruktioner (promptar). Blanda gärna seriösa, pedagogiska och mer lekfulla infallsvinklar.</p>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
+                            <div>
+                                <h4 class="font-semibold mb-2">Pedagogiska promptar:</h4>
+                                <div class="space-y-2">
+                                    <pre class="prompt-block p-3 rounded text-sm"><code>Förenkla den här texten så att den blir lättare att förstå för en elev med lässvårigheter.</code></pre>
+                                    <pre class="prompt-block p-3 rounded text-sm"><code>Skapa tre öppna diskussionsfrågor baserade på den här texten.</code></pre>
+                                    <pre class="prompt-block p-3 rounded text-sm"><code>Förvandla den här instruktionen till en checklista för eleverna.</code></pre>
+                                    <pre class="prompt-block p-3 rounded text-sm"><code>Identifiera textens tre huvudargument och presentera ett motargument till varje.</code></pre>
+                                </div>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold mb-2">Kreativa & Analytiska promptar:</h4>
+                                <div class="space-y-2">
+                                     <pre class="prompt-block p-3 rounded text-sm"><code>Skriv om den här sammanfattningen som en dialog mellan två historiska personer.</code></pre>
+                                    <pre class="prompt-block p-3 rounded text-sm"><code>Sammanfatta texten i form av en haiku-dikt.</code></pre>
+                                    <pre class="prompt-block p-3 rounded text-sm"><code>Skriv om den här texten för en helt annan målgrupp, till exempel föräldrar eller en rektor.</code></pre>
+                                    <pre class="prompt-block p-3 rounded text-sm"><code>Analysera textens styrkor och svagheter ur ett retoriskt perspektiv.</code></pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-lg mb-2">Reflektion: Mer än bara en ny text</h3>
+                        <p>Det viktigaste med övningen är att du upplever vad som händer med innehållet, språket och budskapet när det bearbetas. Att se sin text omformas kan ge nya perspektiv på ditt eget material och väcka idéer om hur du kan differentiera din undervisning, hitta nya ingångar till ett ämne, och skapa mer engagerande läraktiviteter. Var inte rädd för att testa oväntade saker!</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="exercise5" class="my-16">
+            <h2 class="section-title text-2xl md:text-3xl"><span class="bg-gray-700 text-white rounded-full h-10 w-10 flex items-center justify-center flex-shrink-0 mr-4">5</span>Övning 5: Från Styrdokument till Praktik</h2>
+             <div class="bg-white p-6 rounded-lg shadow-md">
+                <p class="font-semibold">Syfte:</p>
+                <p class="mb-4">Att omvandla abstrakt text från styrdokument (som Centralt innehåll) till konkreta, undervisningsbara teman och aktiviteter.</p>
+                <div class="space-y-4">
+                     <div>
+                        <h3 class="font-bold text-lg mb-2">Steg 1: Hitta ditt Centrala Innehåll</h3>
+                        <p class="mb-2">Gå in på Skolverkets hemsida och kopiera texten för "Centralt innehåll" från en av dina kurser.</p>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-lg mb-2">Steg 2: Använd hjälpprompten</h3>
+                        <p class="mb-2">Klistra in din text i prompten nedan och se hur AI:n kan hjälpa dig att strukturera upp din terminsplanering.</p>
+                         <div class="border-2 border-dashed border-gray-400 rounded-lg p-6">
+                            <h3 class="font-bold text-lg mb-2">Hjälpprompt: Kursplaneraren</h3>
+                            <div class="prompt-block p-4 rounded text-sm">
+                                <p class="font-mono">Agera som en erfaren pedagogisk utvecklare och ämnesexpert. Jag kommer att ge dig texten från det centrala innehållet i en av mina kurser. Ditt uppdrag är att hjälpa mig att göra detta innehåll mer lätthanterligt och planera min undervisning.<br><br>Baserat på texten nedan, gör följande:<br><br>1. Identifiera och gruppera innehållet i 3-5 övergripande, elevnära teman som kan ligga till grund för arbetsområden.<br>2. För varje tema, föreslå en konkret och engagerande elevaktivitet som hjälper till att uppfylla målen.<br>3. För varje tema, formulera en essentiell fråga som eleverna borde kunna svara på efter att ha arbetat med temat.<br><br>Här är texten från det centrala innehållet:<br>[Klistra in det centrala innehållet här]</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="exercise6" class="my-16">
+            <h2 class="section-title text-2xl md:text-3xl"><span class="bg-gray-700 text-white rounded-full h-10 w-10 flex items-center justify-center flex-shrink-0 mr-4">6</span>Övning 6: Metafor-verkstaden</h2>
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <p class="font-semibold">Syfte:</p>
+                <p class="mb-4">Att träna på att använda AI för att skapa pedagogiska liknelser och metaforer som förenklar komplexa koncept för elever.</p>
+                 <p class="font-semibold">Instruktion:</p>
+                <p class="mb-6">Använd exemplen nedan som inspiration eller gå direkt till hjälpprompten för att skapa egna metaforer.</p>
+                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4 mb-8">
+                    <div>
+                        <h4 class="font-semibold mb-2">Exempelprompter:</h4>
+                        <div class="space-y-2">
+                            <pre class="prompt-block p-3 rounded text-sm"><code>Skapa en liknelse som förklarar 'fotosyntes' med hjälp av en fabrik.</code></pre>
+                            <pre class="prompt-block p-3 rounded text-sm"><code>Förklara 'Ohms lag' genom att jämföra den med vatten som rinner i en slang.</code></pre>
+                            <pre class="prompt-block p-3 rounded text-sm"><code>Hur skulle du förklara 'källkritik' med en detektiv-analogi?</code></pre>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold mb-2">Fler idéer på koncept:</h4>
+                        <div class="space-y-2">
+                             <pre class="prompt-block p-3 rounded text-sm"><code>Förklara 'demokrati' som om det vore en stor familj som ska bestämma fredagsmys.</code></pre>
+                            <pre class="prompt-block p-3 rounded text-sm"><code>Använd en sport-analogi för att förklara begreppet 'konjunkturcykel' i ekonomi.</code></pre>
+                            <pre class="prompt-block p-3 rounded text-sm"><code>Beskriv 'personlig integritet på nätet' som om det vore ett hus med olika rum.</code></pre>
+                        </div>
+                    </div>
+                </div>
+                 <div class="border-2 border-dashed border-gray-400 rounded-lg p-6">
+                    <h3 class="font-bold text-lg mb-2">Hjälpprompt: Metafor-generatorn</h3>
+                     <p class="text-sm mb-4 italic text-gray-600">Kopiera hela texten nedan och byt ut informationen inom hakparenteserna `[]`.</p>
+                    <div class="prompt-block p-4 rounded text-sm">
+                        <p class="font-mono">Agera som en kreativ och pedagogisk expert. Ditt uppdrag är att förklara ett komplext begrepp med hjälp av liknelser och metaforer.<br><br>Begrepp att förklara: [Skriv in ditt begrepp här, t.ex. "fotosyntes", "källkritik", "demokrati"]<br><br>Skapa tre (3) distinkta och kreativa förklaringar. För varje förklaring, använd en helt ny metafor eller analogi och förklara tydligt kopplingen till begreppet. Strukturera svaret med en tydlig rubrik för varje metafor.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="exercise7" class="my-16">
+            <h2 class="section-title text-2xl md:text-3xl"><span class="bg-gray-700 text-white rounded-full h-10 w-10 flex items-center justify-center flex-shrink-0 mr-4">7</span>Övning 7: LEKTION-ramverket</h2>
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <p class="font-semibold">Syfte:</p><p class="mb-4">Använda avancerade strukturer för att skapa komplexa och högkvalitativa lektionsplaner.</p><p class="font-semibold">Instruktion:</p><p class="mb-6">Studera ramverken och använd sedan hjälpprompten för att skapa en egen lektionsplan.</p>
+                <div class="bg-gray-50 border border-gray-200 rounded-lg p-6 mb-6">
+                    <h3 class="font-bold text-lg mb-2">Förklaring: Ramverk för Promptning</h3>
+                    <p class="text-sm mb-4 text-gray-600">För att få riktigt bra resultat behöver vi ge AI:n en tydlig struktur. Här är tre ramverk med olika detaljnivå.</p>
+                    <div class="mb-6">
+                        <h4 class="font-semibold text-gray-800">1. Det enkla ramverket: CARE</h4>
+                        <p class="text-sm my-2 text-gray-600">Perfekt för snabba och tydliga uppgifter, som att skapa några frågor. Lätt att komma ihåg.</p>
+                        <p class="font-semibold text-sm mt-4 mb-2">Exempel på CARE i praktiken:</p>
+                        <pre class="prompt-block p-3 rounded text-sm"><code>(Context) Jag är historielärare för åk 9 och vi har läst om industriella revolutionen.
+
+(Action) Skapa 5 instuderingsfrågor baserade på ämnet.
+
+(Result) Frågorna ska vara öppna, uppmuntra till resonemang och inte bara rena faktafrågor.
+
+(Example) En fråga skulle kunna vara: "Vilka var de tre viktigaste konsekvenserna av industriella revolutionen för en vanlig arbetare i Sverige och hur påverkade de samhället i stort?"</code></pre>
+                    </div>
+                     <div class="mb-6">
+                        <h4 class="font-semibold text-gray-800">2. Det rollbaserade ramverket: RACE</h4>
+                        <p class="text-sm my-2 text-gray-600">Särskilt bra när du vill att AI:n ska agera i en specifik roll, t.ex. för att ge feedback.</p>
+                         <p class="font-semibold text-sm mt-4 mb-2">Exempel på RACE i praktiken:</p>
+                        <pre class="prompt-block p-3 rounded text-sm"><code>(Role) Agera som en kritisk och uppmuntrande svensklärare.
+
+(Action) Ge feedback på följande elevtext. Fokusera på textens struktur och argumentation.
+
+(Context) Eleven går i åk 2 på gymnasiet och har svårt att utveckla sina resonemang. Texten är ett utkast till en argumenterande text om skärmtid.
+
+(Expectation) Ge tre konkreta tips på hur eleven kan fördjupa sina argument och förbättra den röda tråden i texten.</code></pre>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-800">3. Det avancerade ramverket: LEKTION</h4>
+                        <p class="text-sm my-2 text-gray-600">Använd detta när du vill skapa en komplett lektionsplan från grunden.</p>
+                         <p class="font-semibold text-sm mt-4 mb-2">Exempel på LEKTION i praktiken:</p>
+                        <pre class="prompt-block p-3 rounded text-sm"><code>(Lärarroll & Målgrupp) Agera som en engagerande biologilärare för åk 1 på naturprogrammet.
+(Exakt kontext) Vi ska ha en introduktionslektion om fotosyntesen. Eleverna kan grunderna om celler.
+(Komponenter) Skapa en startfråga, en huvudaktivitet där eleverna får rita processen, och en exit-ticket med 3 frågor.
+(Ton och Stil) Använd en inspirerande ton med tydliga analogier.
+(Instruktioner för format) Strukturera med tydliga rubriker för varje del.
+(Outcome) Målet är att eleverna ska förstå den övergripande processen i fotosyntesen.
+(Negativa instruktioner) Undvik alltför komplexa kemiska formler i detta skede.</code></pre>
+                    </div>
+                </div>
+                <div class="border-2 border-dashed border-gray-400 rounded-lg p-6">
+                    <h3 class="font-bold text-lg mb-2">Hjälpprompt: Skapa en Lektionsplan</h3>
+                    <p class="text-sm mb-4 italic text-gray-600">Kopiera hela texten nedan och byt ut informationen inom hakparenteserna `[]`.</p>
+                    <div class="prompt-block p-4 rounded text-sm"><p class="font-mono">Agera som en expert inom pedagogik och didaktik, med specialisering på [ditt ämne]. Ditt uppdrag är att skapa en engagerande, robust och detaljerad lektionsplanering för gymnasiet, baserat på följande information:<br><br>Kurs: [Ange kursens namn, t.ex. Biologi 1]<br>Lektionens Tema: [Ange det specifika temat, t.ex. 'Fotosyntesen: Hur växter skapar energi']<br>Målgrupp: [Beskriv klassen/årskursen och deras förkunskaper, t.ex. 'Årskurs 1 på naturvetenskapsprogrammet, de har grundläggande kunskaper om celler men inte om fotosyntes']<br>Tidsram: [Ange lektionens totala längd i minuter, t.ex. 70 minuter]<br>Lärandemål: Efter lektionen ska eleverna kunna:<br>[Ange ett konkret och mätbart lärandemål]<br>[Ange ett andra konkret och mätbart lärandemål]<br><br>Strukturera lektionsplaneringen i tre tydliga delar enligt nedan, med förslag på tidsåtgång för varje del:<br><br>1. **Intresseväckande Start (ca 10 min):**<br>Skapa en öppen och tankeväckande fråga som direkt kopplar an till lektionens tema.<br><br>2. **Huvudinnehåll & Aktivitet (ca 45 min):**<br>* **Genomgång:** Beskriv kärninnehållet på ett tydligt sätt.<br>* **Aktivitet:** Föreslå en engagerande huvudaktivitet (t.ex. "Think-Pair-Share", laboration, begreppskarta).<br><br>3. **Avslutning & Exit Ticket (ca 15 min):**<br>* **Sammanfattning:** Ge förslag på hur lektionen kan sammanfattas.<br>* **Exit Ticket:** Skapa exakt 6 flervalsfrågor (A, B, C, D) med facit.</p></div>
+                </div>
+                <div id="accordion-container-7" class="mt-8">
+                    <h3 class="font-bold text-lg mb-4">Klicka för att se programexempel (lektionsplan):</h3>
+                    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-2"></div>
+                    <div id="accordion-content-container-7" class="mt-4 space-y-2"></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="exercise8" class="my-16">
+            <h2 class="section-title text-2xl md:text-3xl"><span class="bg-gray-700 text-white rounded-full h-10 w-10 flex items-center justify-center flex-shrink-0 mr-4">8</span>Övning 8: Skapa ett Lektionsblock</h2>
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <p class="font-semibold">Syfte:</p><p class="mb-4">Använda ett avancerat ramverk för att planera ett helt, sammanhängande lektionsblock med en tydlig röd tråd.</p><p class="font-semibold">Instruktion:</p><p class="mb-6">Använd hjälpprompten nedan för att skapa en serie av fyra lektioner. Kopiera hela texten och byt ut informationen inom hakparenteserna `[]`.</p>
+                <div class="border-2 border-dashed border-gray-400 rounded-lg p-6">
+                    <h3 class="font-bold text-lg mb-2">Hjälpprompt: Den Perfekta Prompten för ett Robust Lektionsblock (4 Lektioner)</h3>
+                     <p class="text-sm mb-4 italic text-gray-600">Kopiera hela texten nedan och byt ut informationen inom hakparenteserna `[]`.</p>
+                    <div class="prompt-block p-4 rounded text-sm"><p class="font-mono">Agera som en expert inom pedagogik och didaktik, med specialisering på [ditt ämne]. Ditt uppdrag är att skapa ett sammanhängande och robust lektionsblock bestående av fyra lektioner för gymnasiet, baserat på följande information.<br><br>**DEL A: ÖVERGRIPANDE INFORMATION FÖR HELA BLOCKET**<br><br>Kurs: [Ange kursens namn, t.ex. Svenska 2]<br>Övergripande Tema för Blocket: [Ange det övergripande temat, t.ex. 'Retorisk analys av politiska tal']<br>Målgrupp: [Beskriv klassen/årskursen och deras förkunskaper, t.ex. 'Årskurs 2 på samhällsvetenskapsprogrammet, de har grundläggande kunskaper om ethos, pathos, logos men behöver praktisk övning.']<br>Den Röda Tråden (Blockets Huvudmål): [Beskriv den övergripande förmåga eller förståelse eleven ska ha utvecklat efter de fyra lektionerna. Exempel: 'Från att förstå de retoriska grundbegreppen till att självständigt kunna genomföra och presentera en fullständig retorisk analys av ett tal.']<br><br>**DEL B: STRUKTUR FÖR VARJE ENSKILD LEKTION**<br><br>För varje enskild lektion (Lektion 1, 2, 3 och 4), skapa en detaljerad planering som följer strukturen nedan. Se till att varje lektion logiskt bygger vidare på den föregående för att upprätthålla den röda tråden.<br><br>**Struktur per lektion:**<br><br>1. **Lektionens Titel & Fokus:** Ge varje lektion en tydlig titel och ett specifikt fokus som bidrar till blockets huvudmål.<br>2. **Intresseväckande Start (ca 10 min):** Skapa en unik, tankeväckande fråga eller en kort aktivitet som introducerar just denna lektions specifika fokus och kopplar till föregående lektion.<br>3. **Huvudinnehåll & Aktivitet (ca 45-50 min):**<br>   * **Genomgång:** Beskriv kärninnehållet som ska presenteras.<br>   * **Aktivitet:** Föreslå en engagerande huvudaktivitet som är anpassad för lektionens mål och bygger vidare på elevernas kunskaper. Progressionen ska vara tydlig (t.ex. från analys av korta klipp i lektion 2 till att arbeta med ett helt tal i lektion 3).<br>4. **Avslutning & Exit Ticket (ca 15 min):**<br>   * **Sammanfattning:** Ge ett förslag på hur lektionens kärna kan sammanfattas och hur den leder vidare till nästa lektion.<br>   * **Exit Ticket:** Skapa en "Exit Ticket" bestående av exakt 6 stycken flervalsfrågor (A, B, C, D) som prövar förståelsen av just denna lektions innehåll och lärandemål. Inkludera en separat svarsnyckel (facit) för varje lektion.</p></div>
+                </div>
+                 <div id="accordion-container-8" class="mt-8">
+                    <h3 class="font-bold text-lg mb-4">Klicka för att se programexempel:</h3>
+                    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-2"></div>
+                    <div id="accordion-content-container-8" class="mt-4 space-y-2"></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="bonustips" class="my-16">
+            <h2 class="section-title text-2xl md:text-3xl">Bonustips: Från Lektionsplan till Presentation</h2>
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <p class="font-semibold">Syfte:</p>
+                <p class="mb-4">Att snabbt omvandla en textbaserad lektionsplan till ett komplett, visuellt presentationsunderlag.</p>
+                <p class="font-semibold">Instruktion:</p>
+                <p class="mb-6">När du har fått en lektionsplan från AI:n, klistra in den i en **ny chatt** och använd sedan prompten nedan för att generera ett bild-för-bild-manus.</p>
+                <div class="border-2 border-dashed border-gray-400 rounded-lg p-6">
+                    <h3 class="font-bold text-lg mb-2">Hjälpprompt: Presentationsskaparen</h3>
+                     <p class="text-sm mb-4 italic text-gray-600">Kopiera hela texten nedan.</p>
+                    <div class="prompt-block p-4 rounded text-sm">
+                        <p class="font-mono">Agera som en expert på pedagogisk design och visuell kommunikation. Ditt uppdrag är att omvandla lektionsplanen till två separata delar:<br><br>**DEL 1: PRESENTATIONSINNEHÅLL (FÖR GAMMA.APP / AI-VERKTYG)**<br>Skapa ett rent Markdown-skript som är optimerat för att klistras in i ett AI-presentationsverktyg.<br><br>Använd huvudrubriker (# Titel) för att definiera varje ny bild.<br>Använd punktlistor (*) för kortfattat och slagkraftigt textinnehåll.<br>Inkludera inga visuella idéer eller talmanus i denna del. All text ska vara ämnad för själva presentationen.<br>Se till att eventuella quizfrågor och deras svarsalternativ hamnar på separata bilder.<br><br>**DEL 2: LÄRARSTÖD (TALMANUS & VISUELLA IDÉER)**<br>Efter Markdown-skriptet, skapa en separat sektion med rubriken "Lärarstöd". För varje bildrubrik från Del 1, specificera:<br><br>Talmanus: Ge mig 1-4 meningar i stödordsform som jag som lärare kan säga för att fördjupa innehållet.<br>Visuella Idéer: Beskriv vilken typ av bild, diagram eller ikon som bäst skulle förstärka budskapet, som inspiration ifall AI-verktyget behöver guidas.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="bonustips2" class="my-16">
+            <h2 class="section-title text-2xl md:text-3xl">Bonustips 2: Från Lektionsplan till Interaktiv Webbapplikation</h2>
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <p class="font-semibold">Syfte:</p>
+                <p class="mb-4">Att omvandla en lektionsplan till en komplett, interaktiv och visuellt engagerande webbsida i en enda, enkel HTML-fil.</p>
+                <p class="font-semibold">Instruktion:</p>
+                <p class="mb-6">Denna prompt är för mer avancerad användning och visar hur man kan be AI:n att agera programmerare. Klistra in din lektionsplan och se hur den kan bli en webbsida.</p>
+                <div class="border-2 border-dashed border-gray-400 rounded-lg p-6">
+                    <h3 class="font-bold text-lg mb-2">Hjälpprompt: Webb-utvecklaren</h3>
+                     <p class="text-sm mb-4 italic text-gray-600">Kopiera hela texten nedan.</p>
+                    <div class="prompt-block p-4 rounded text-sm">
+                        <p class="font-mono">Agera som en expert på frontend-utveckling och UI/UX-design, specialiserad på att skapa enkla och engagerande webbsidor.<br><br>Ditt uppdrag är att omvandla följande lektionsplan till en komplett, interaktiv och visuellt tilltalande webbsida i en ENDA HTML-fil.<br><br>**Tekniska Krav:**<br>Generera en komplett, ensidig HTML-fil. Använd **Tailwind CSS** för all styling, inladdat via CDN (&lt;script src="https://cdn.tailwindcss.com"&gt;&lt;/script&gt;). All interaktivitet ska hanteras med inbäddad, vanilla JavaScript (inga externa JS-bibliotek).<br><br>**Designkrav:**<br>Designen ska vara modern, luftig och anpassad för gymnasieelever. Fokusera på tydlighet, läsbarhet och en tilltalande layout. Inkludera enkla interaktiva element som gör innehållet mer engagerande, exempelvis att kunna klicka på en fråga för att visa svaret.<br><br>**Lektionsplan att omvandla:**<br>[Klistra in hela din lektionsplan här]</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <footer class="text-center mt-16 py-8 border-t border-gray-200">
+            <p class="text-gray-500">Skapad för att inspirera och underlätta AI-användning i skolans värld.</p>
+        </footer>
+    </div>
+
+    <script>
+        const chartCtx = document.getElementById('workshopStructureChart');
+        if (chartCtx) {
+            new Chart(chartCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['1. Uppvärmning','2. Sago-generatorn','3. Tal-verkstaden','4. Text-transformatorn','5. Styrdokument', '6. Metafor-verkstaden','7. Lektionsplan','8. Lektionsblock'],
+                    datasets: [{
+                        label: 'Workshopens Övningar',
+                        data: [1, 1, 1, 1, 1, 1, 1, 1],
+                        backgroundColor: ['#a5b4fc','#fca5a5','#fdba74','#86efac','#fcd34d', '#f9a8d4', '#c084fc','#67e8f9'],
+                        borderColor: '#f8f9fa',
+                        borderWidth: 4,
+                        hoverOffset: 10
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { position: 'bottom', labels: { padding: 15, font: { size: 12 }}},
+                        tooltip: {
+                            callbacks: {
+                                title: function(tooltipItems) {
+                                    const item = tooltipItems[0];
+                                    let label = item.chart.data.labels[item.dataIndex];
+                                    return Array.isArray(label) ? label.join(' ') : label;
+                                }
+                            },
+                            padding: 12,
+                            bodyFont: { size: 14 },
+                            titleFont: { size: 16, weight: 'bold'}
+                        }
+                    }
+                }
+            });
+        }
+
+        const genericDel5 = `Strukturera lektionsplaneringen i tre tydliga delar enligt nedan, med förslag på tidsåtgång för varje del:<br><br>1. **Intresseväckande Start (ca 10 min):**<br>Skapa en öppen och tankeväckande fråga som direkt kopplar an till lektionens tema. Frågan ska vara utformad för att fånga elevernas intresse och aktivera deras förförståelse.<br><br>2. **Huvudinnehåll & Aktivitet (ca 45 min):**<br>* **Genomgång:** Beskriv kärninnehållet som ska presenteras på ett tydligt och begripligt sätt.<br>* **Aktivitet:** Föreslå en engagerande huvudaktivitet (t.ex. en "Think-Pair-Share", en kort laboration, en begreppskarta) som hjälper eleverna att bearbeta och förstå informationen.<br><br>3. **Avslutning & Exit Ticket (ca 15 min):**<br>* **Sammanfattning:** Ge ett förslag på hur lektionens kärna kan sammanfattas.<br>* **Exit Ticket:** Skapa en "Exit Ticket" bestående av exakt 6 stycken flervalsfrågor som prövar förståelsen av lektionens lärandemål. Varje fråga ska ha fyra svarsalternativ (A, B, C, D), där ett är korrekt. Inkludera en separat svarsnyckel (facit) efter frågorna.`;
+
+        const prompts7 = {
+            'Barn & Fritid': `Agera som en expert inom pedagogik och didaktik, med specialisering på Barn- och fritidspedagogik. Ditt uppdrag är att skapa en engagerande, robust och detaljerad lektionsplanering för gymnasiet, baserat på följande information:<br><br>Kurs: Pedagogiskt ledarskap<br>Lektionens Tema: Konflikthantering i barngrupper<br>Målgrupp: Åk 2 på Barn- och fritidsprogrammet, de har grundläggande kunskaper om barns utveckling.<br>Tidsram: 80 minuter<br>Lärandemål: <br>1. Eleven kan identifiera två vanliga orsaker till konflikter i en barngrupp.<br>2. Eleven kan beskriva en grundläggande strategi för konflikthantering.<br><br>${genericDel5}`,
+            'Bygg & Anläggning': `Agera som en expert inom pedagogik och didaktik, med specialisering på Bygg och anläggning. Ditt uppdrag är att skapa en engagerande, robust och detaljerad lektionsplanering för gymnasiet, baserat på följande information:<br><br>Kurs: Bygg och anläggning 1<br>Lektionens Tema: Materialsäkerhet och Personlig Skyddsutrustning (PSU)<br>Målgrupp: Åk 1, nya på programmet och har begränsad kunskap om arbetsplatsrisker.<br>Tidsram: 60 minuter<br>Lärandemål: <br>1. Eleven kan namnge och förklara funktionen hos 5 grundläggande PSU.<br>2. Eleven kan identifiera 3 vanliga säkerhetsrisker med byggmaterial.<br><br>${genericDel5}`,
+            'Ekonomi': `Agera som en expert inom pedagogik och didaktik, med specialisering på Företagsekonomi. Ditt uppdrag är att skapa en engagerande, robust och detaljerad lektionsplanering för gymnasiet, baserat på följande information:<br><br>Kurs: Företagsekonomi 1<br>Lektionens Tema: Marknadsföringsmixen (4P)<br>Målgrupp: Åk 1 på Ekonomiprogrammet, har precis börjat med marknadsföring.<br>Tidsram: 70 minuter<br>Lärandemål: <br>1. Eleven kan förklara de fyra P:na (Produkt, Pris, Plats, Påverkan).<br>2. Eleven kan applicera de fyra P:na på en känd produkt.<br><br>${genericDel5}`,
+            'El & Energi': `Agera som en expert inom pedagogik och didaktik, med specialisering på Elteknik. Ditt uppdrag är att skapa en engagerande, robust och detaljerad lektionsplanering för gymnasiet, baserat på följande information:<br><br>Kurs: Praktisk ellära<br>Lektionens Tema: Ohms lag - Sambandet mellan spänning, ström och resistans<br>Målgrupp: Åk 1 på El- och energiprogrammet, första gången de stöter på begreppen.<br>Tidsram: 80 minuter<br>Lärandemål: <br>1. Eleven kan återge Ohms lag med egna ord.<br>2. Eleven kan genomföra en enkel beräkning med hjälp av Ohms lag.<br><br>${genericDel5}`,
+            'Fordons- & Transport': `Agera som en expert inom pedagogik och didaktik, med specialisering på Fordonsteknik. Ditt uppdrag är att skapa en engagerande, robust och detaljerad lektionsplanering för gymnasiet, baserat på följande information:<br><br>Kurs: Fordonsteknik - introduktion<br>Lektionens Tema: Bromssystemets huvudkomponenter<br>Målgrupp: Åk 1 på Fordons- och transportprogrammet.<br>Tidsram: 60 minuter<br>Lärandemål: <br>1. Eleven kan identifiera och namnge bromsskiva, bromsbelägg och bromsok.<br>2. Eleven kan förklara den grundläggande funktionen hos ett skivbromssystem.<br><br>${genericDel5}`,
+            'Industritekniska': `Agera som en expert inom pedagogik och didaktik, med specialisering på Industriteknik. Ditt uppdrag är att skapa en engagerande, robust och detaljerad lektionsplanering för gymnasiet, baserat på följande information:<br><br>Kurs: Produktionskunskap 1<br>Lektionens Tema: Introduktion till CNC-teknik<br>Målgrupp: Åk 2 på Industritekniska programmet, har tidigare arbetat med manuella maskiner.<br>Tidsram: 70 minuter<br>Lärandemål: <br>1. Eleven kan förklara vad förkortningen CNC står för och dess grundläggande princip.<br>2. Eleven kan jämföra för- och nackdelar med CNC jämfört med manuell bearbetning.<br><br>${genericDel5}`,
+            'Introduktion': `Agera som en expert inom pedagogik och didaktik, med specialisering på Svenska som andraspråk. Ditt uppdrag är att skapa en engagerande, robust och detaljerad lektionsplanering för gymnasiet, baserat på följande information:<br><br>Kurs: Svenska som andraspråk, grundnivå<br>Lektionens Tema: "På affären" - Att handla mat<br>Målgrupp: Elever på Introduktionsprogram med varierande språknivåer.<br>Tidsram: 60 minuter<br>Lärandemål: <br>1. Eleven kan namnge 10 vanliga livsmedel.<br>2. Eleven kan använda fraserna "Vad kostar den?" och "Jag skulle vilja ha...".<br><br>${genericDel5}`,
+            'Naturvetenskap': `Agera som en expert inom pedagogik och didaktik, med specialisering på Biologi. Ditt uppdrag är att skapa en engagerande, robust och detaljerad lektionsplanering för gymnasiet, baserat på följande information:<br><br>Kurs: Biologi 1<br>Lektionens Tema: DNA-replikation<br>Målgrupp: Åk 1 på Naturvetenskapsprogrammet, de känner till DNA-molekylens grundstruktur.<br>Tidsram: 80 minuter<br>Lärandemål: <br>1. Eleven kan i stora drag beskriva stegen i DNA-replikationen.<br>2. Eleven kan förklara varför replikationen kallas "semikonservativ".<br><br>${genericDel5}`,
+            'Samhällskunskap': `Agera som en expert inom pedagogik och didaktik, med specialisering på Samhällskunskap. Ditt uppdrag är att skapa en engagerande, robust och detaljerad lektionsplanering för gymnasiet, baserat på följande information:<br><br>Kurs: Samhällskunskap 1b<br>Lektionens Tema: Mediers makt och källkritik<br>Målgrupp: Åk 1 på Samhällsvetenskapsprogrammet.<br>Tidsram: 70 minuter<br>Lärandemål: <br>1. Eleven kan redogöra för begreppet "grindkeeper".<br>2. Eleven kan tillämpa de fyra källkritiska kriterierna på en nyhetstext.<br><br>${genericDel5}`,
+            'Teknik': `Agera som en expert inom pedagogik och didaktik, med specialisering på Teknikutveckling. Ditt uppdrag är att skapa en engagerande, robust och detaljerad lektionsplanering för gymnasiet, baserat på följande information:<br><br>Kurs: Teknik 1<br>Lektionens Tema: Problemlösning och den tekniska processen<br>Målgrupp: Åk 1 på Teknikprogrammet.<br>Tidsram: 80 minuter<br>Lärandemål: <br>1. Eleven kan beskriva stegen i den tekniska utvecklingsprocessen.<br>2. Eleven kan i grupp tillämpa de första stegen (identifiera problem, research, brainstorming) på ett givet problem.<br><br>${genericDel5}`
+        };
+
+        const genericDel6 = `**DEL B: STRUKTUR FÖR VARJE ENSKILD LEKTION**<br><br>För varje enskild lektion (Lektion 1, 2, 3 och 4), skapa en detaljerad planering som följer strukturen nedan. Se till att varje lektion logiskt bygger vidare på den föregående för att upprätthålla den röda tråden.<br><br>**Struktur per lektion:**<br><br>1. **Lektionens Titel & Fokus:** Ge varje lektion en tydlig titel och ett specifikt fokus som bidrar till blockets huvudmål.<br>2. **Intresseväckande Start (ca 10 min):** Skapa en unik, tankeväckande fråga eller en kort aktivitet som introducerar just denna lektions specifika fokus och kopplar till föregående lektion.<br>3. **Huvudinnehåll & Aktivitet (ca 45-50 min):**<br>   * **Genomgång:** Beskriv kärninnehållet som ska presenteras.<br>   * **Aktivitet:** Föreslå en engagerande huvudaktivitet som är anpassad för lektionens mål och bygger vidare på elevernas kunskaper. Progressionen ska vara tydlig (t.ex. från analys av korta klipp i lektion 2 till att arbeta med ett helt tal i lektion 3).<br>4. **Avslutning & Exit Ticket (ca 15 min):**<br>   * **Sammanfattning:** Ge ett förslag på hur lektionens kärna kan sammanfattas och hur den leder vidare till nästa lektion.<br>   * **Exit Ticket:** Skapa en "Exit Ticket" bestående av exakt 6 stycken flervalsfrågor (A, B, C, D) som prövar förståelsen av just denna lektions innehåll och lärandemål. Inkludera en separat svarsnyckel (facit) för varje lektion.`;
+        
+        const prompts8 = {
+            'Barn & Fritid': `Agera som en expert inom pedagogik och didaktik, med specialisering på Barn- och fritidspedagogik. Ditt uppdrag är att skapa ett sammanhängande och robust lektionsblock bestående av fyra lektioner för gymnasiet, baserat på följande information.<br><br>**DEL A: ÖVERGRIPANDE INFORMATION FÖR HELA BLOCKET**<br><br>Kurs: Fritids- och idrottskunskap<br>Övergripande Tema för Blocket: Planera och leda en aktivitet för äldre<br>Målgrupp: Åk 3, ska genomföra ett projektarbete på ett äldreboende.<br>Den Röda Tråden (Blockets Huvudmål): Från att förstå målgruppens behov till att självständigt planera, genomföra och utvärdera en anpassad, säker och meningsfull aktivitet.<br><br>${genericDel6}`,
+            'Bygg & Anläggning': `Agera som en expert inom pedagogik och didaktik, med specialisering på Bygg och anläggning. Ditt uppdrag är att skapa ett sammanhängande och robust lektionsblock bestående av fyra lektioner för gymnasiet, baserat på följande information.<br><br>**DEL A: ÖVERGRIPANDE INFORMATION FÖR HELA BLOCKET**<br><br>Kurs: Husbyggnadsprocesser<br>Övergripande Tema för Blocket: Från ritning till färdig vägg<br>Målgrupp: Åk 2, har grundläggande material- och verktygskunskap.<br>Den Röda Tråden (Blockets Huvudmål): Att kunna tolka en konstruktionsritning och praktiskt, steg-för-steg, bygga en regelvägg enligt gällande normer och säkerhetsföreskrifter.<br><br>${genericDel6}`,
+            'Ekonomi': `Agera som en expert inom pedagogik och didaktik, med specialisering på Företagsekonomi. Ditt uppdrag är att skapa ett sammanhängande och robust lektionsblock bestående av fyra lektioner för gymnasiet, baserat på följande information.<br><br>**DEL A: ÖVERGRIPANDE INFORMATION FÖR HELA BLOCKET**<br><br>Kurs: Entreprenörskap och företagande<br>Övergripande Tema för Blocket: Från idé till Business Model Canvas<br>Målgrupp: Åk 2, UF-året har precis startat.<br>Den Röda Tråden (Blockets Huvudmål): Att gå från en lös affärsidé till en strukturerad och genomtänkt affärsmodell med hjälp av verktyget Business Model Canvas (BMC).<br><br>${genericDel6}`,
+            'El & Energi': `Agera som en expert inom pedagogik och didaktik, med specialisering på Elteknik. Ditt uppdrag är att skapa ett sammanhängande och robust lektionsblock bestående av fyra lektioner för gymnasiet, baserat på följande information.<br><br>**DEL A: ÖVERGRIPANDE INFORMATION FÖR HELA BLOCKET**<br><br>Kurs: Elinstallationer<br>Övergripande Tema för Blocket: Installation av ett vägguttag<br>Målgrupp: Åk 2, har teoretiska kunskaper om kretsar men behöver praktisk övning.<br>Den Röda Tråden (Blockets Huvudmål): Att på ett säkert och fackmannamässigt sätt kunna genomföra en hel installation, från planering och kabeldragning till inkoppling och kontroll.<br><br>${genericDel6}`,
+            'Fordons- & Transport': `Agera som en expert inom pedagogik och didaktik, med specialisering på Fordonsteknik och transport. Ditt uppdrag är att skapa ett sammanhängande och robust lektionsblock bestående av fyra lektioner för gymnasiet, baserat på följande information.<br><br>**DEL A: ÖVERGRIPANDE INFORMATION FÖR HELA BLOCKET**<br><br>Kurs: Lastbilskörning och logistik<br>Övergripande Tema för Blocket: Säker lastning och lastsäkring<br>Målgrupp: Åk 3, förbereder sig för YKB (Yrkeskompetensbevis).<br>Den Röda Tråden (Blockets Huvudmål): Från att förstå de fysikaliska krafterna vid transport till att praktiskt kunna planera och utföra en korrekt lastsäkring enligt lagkrav.<br><br>${genericDel6}`,
+            'Industritekniska': `Agera som en expert inom pedagogik och didaktik, med specialisering på Industriteknik. Ditt uppdrag är att skapa ett sammanhängande och robust lektionsblock bestående av fyra lektioner för gymnasiet, baserat på följande information.<br><br>**DEL A: ÖVERGRIPANDE INFORMATION FÖR HELA BLOCKET**<br><br>Kurs: Mät- och provningsteknik<br>Övergripande Tema för Blocket: Kvalitetssäkring med digitalt skjutmått och mikrometer<br>Målgrupp: Åk 2, har grundläggande ritningsläsning.<br>Den Röda Tråden (Blockets Huvudmål): Att förstå vikten av precision och toleranser, och att korrekt kunna använda och avläsa digitala mätverktyg för att kontrollera en tillverkad detalj mot en ritning.<br><br>${genericDel6}`,
+            'Introduktion': `Agera som en expert inom pedagogik och didaktik, med specialisering på Svenska som andraspråk och samhällsorientering. Ditt uppdrag är att skapa ett sammanhängande och robust lektionsblock bestående av fyra lektioner för gymnasiet, baserat på följande information.<br><br>**DEL A: ÖVERGRIPANDE INFORMATION FÖR HELA BLOCKET**<br><br>Kurs: Samhällsorientering för IM<br>Målgrupp: Nyanlända ungdomar, varierande språkbakgrund.<br>Den Röda Tråden (Blockets Huvudmål): Att ge eleverna de grundläggande verktyg och det ordförråd som behövs för att självständigt kunna navigera i sin lokala miljö med hjälp av kollektivtrafik och digitala kartor.<br><br>${genericDel6}`,
+            'Naturvetenskap': `Agera som en expert inom pedagogik och didaktik, med specialisering på Kemi. Ditt uppdrag är att skapa ett sammanhängande och robust lektionsblock bestående av fyra lektioner för gymnasiet, baserat på följande information.<br><br>**DEL A: ÖVERGRIPANDE INFORMATION FÖR HELA BLOCKET**<br><br>Kurs: Kemi 1<br>Övergripande Tema för Blocket: Stökiometri - Konsten att räkna på kemiska reaktioner<br>Målgrupp: Åk 1, har grundläggande kunskap om atomer, molekyler och det periodiska systemet.<br>Den Röda Tråden (Blockets Huvudmål): Från att förstå molbegreppet till att självständigt kunna balansera en reaktionsformel och beräkna massan av produkter från en given mängd reaktanter.<br><br>${genericDel6}`,
+            'Samhällskunskap': `Agera som en expert inom pedagogik och didaktik, med specialisering på Internationella relationer. Ditt uppdrag är att skapa ett sammanhängande och robust lektionsblock bestående av fyra lektioner för gymnasiet, baserat på följande information.<br><br>**DEL A: ÖVERGRIPANDE INFORMATION FÖR HELA BLOCKET**<br><br>Kurs: Internationella relationer<br>Övergripande Tema för Blocket: Konflikten mellan Israel och Palestina<br>Målgrupp: Åk 3, har goda kunskaper i historia och samhällskunskap.<br>Den Röda Tråden (Blockets Huvudmål): Att ge eleverna en djupare, nyanserad förståelse för konfliktens historiska rötter, centrala aktörer och de huvudsakliga hindren för en fredlig lösning, med fokus på multiperspektivitet.<br><br>${genericDel6}`,
+            'Teknik': `Agera som en expert inom pedagogik och didaktik, med specialisering på Teknikutveckling och programmering. Ditt uppdrag är att skapa ett sammanhängande och robust lektionsblock bestående av fyra lektioner för gymnasiet, baserat på följande information.<br><br>**DEL A: ÖVERGRIPANDE INFORMATION FÖR HELA BLOCKET**<br><br>Kurs: Programmering 1<br>Övergripande Tema för Blocket: Introduktion till Python med Turtle-grafik<br>Målgrupp: Åk 1, inga förkunskaper i programmering krävs.<br>Den Röda Tråden (Blockets Huvudmål): Att ge eleverna en visuell och engagerande introduktion till grundläggande programmeringskoncept (sekvens, loopar, variabler) genom att rita figurer med Turtle-biblioteket.<br><br>${genericDel6}`
+        };
+
+        function setupAccordion(containerId, promptData) {
+            const buttonContainer = document.querySelector(`#${containerId} > div:first-of-type`);
+            const contentContainer = document.querySelector(`#${containerId} > #accordion-content-container-${containerId.split('-')[2]}`);
+            
+            if (!buttonContainer || !contentContainer) return;
+            
+            const programs = Object.keys(promptData);
+            
+            programs.forEach((program, index) => {
+                const buttonId = `btn-${containerId}-${index}`;
+                const contentId = `content-${containerId}-${index}`;
+
+                const button = document.createElement('button');
+                button.className = 'accordion-button w-full text-left p-3 bg-gray-100 hover:bg-gray-200 rounded-md text-sm font-semibold text-gray-700 transition flex justify-between items-center';
+                button.setAttribute('data-target', `#${contentId}`);
+                button.innerHTML = `<span>${program}</span><span class="arrow transition-transform duration-300">▼</span>`;
+                
+                buttonContainer.appendChild(button);
+
+                const contentDiv = document.createElement('div');
+                contentDiv.id = contentId;
+                contentDiv.className = 'accordion-content';
+                contentDiv.innerHTML = `<div class="prompt-block p-4 rounded text-sm">${promptData[program]}</div>`;
+                
+                contentContainer.appendChild(contentDiv);
+            });
+
+            buttonContainer.addEventListener('click', function(e) {
+                const button = e.target.closest('.accordion-button');
+                if (!button) return;
+
+                const targetId = button.dataset.target;
+                const content = document.querySelector(targetId);
+                const allButtons = Array.from(buttonContainer.querySelectorAll('.accordion-button'));
+                const allContent = Array.from(contentContainer.querySelectorAll('.accordion-content'));
+                
+                const isActive = button.classList.contains('active');
+
+                allButtons.forEach(btn => {
+                    if (btn !== button) {
+                        btn.classList.remove('active');
+                        const otherContent = document.querySelector(btn.dataset.target);
+                        if (otherContent) otherContent.style.maxHeight = null;
+                    }
+                });
+
+                if (isActive) {
+                    content.style.maxHeight = null;
+                    button.classList.remove('active');
+                } else {
+                    button.classList.add('active');
+                    content.style.maxHeight = content.scrollHeight + "px";
+                }
+            });
+        }
+        
+        setupAccordion('accordion-container-7', prompts7);
+        setupAccordion('accordion-container-8', prompts8);
+
+    </script>
+</body>
+</html>

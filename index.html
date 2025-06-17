@@ -32,7 +32,7 @@
             width: 100%;
             max-width: 400px;
         }
-        h2 {
+        h2.section-title {
             border-bottom: 2px solid #6c757d;
             padding-bottom: 0.5rem;
             margin-bottom: 1.5rem;
@@ -88,36 +88,14 @@
         </section>
 
         <section id="exercise1" class="my-16">
-            <h2><span class="bg-gray-700 text-white rounded-full h-10 w-10 flex items-center justify-center flex-shrink-0 mr-4">1</span>Övning 1: Uppvärmnings-buffé</h2>
+            <h2 class="section-title text-2xl md:text-3xl"><span class="bg-gray-700 text-white rounded-full h-10 w-10 flex items-center justify-center flex-shrink-0 mr-4">1</span>Övning 1: Uppvärmnings-buffé</h2>
             <div class="bg-white p-6 rounded-lg shadow-md">
                 <p class="font-semibold">Syfte:</p>
                 <p class="mb-4">Att snabbt och varierat testa AI:ns förmåga att hantera olika kreativa begränsningar, roller och perspektiv.</p>
                 <p class="font-semibold">Instruktion:</p>
                 <p class="mb-6">Välj en av följande tre snabba uppvärmningsövningar. Arbeta gärna i par.</p>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    <div class="border border-gray-200 rounded-lg p-4 flex flex-col">
-                        <h3 class="font-bold text-lg mb-2">A) Haiku-mästaren</h3>
-                        <p class="text-sm text-gray-600 mb-4 flex-grow">Se hur AI hanterar strikta kreativa ramar (5-7-5 stavelser).</p>
-                        <p class="font-semibold text-sm">Exempel:</p>
-                        <pre class="prompt-block p-3 rounded text-sm my-2"><code>Skriv en haiku om kaffe.</code></pre>
-                        <pre class="prompt-block p-3 rounded text-sm my-2"><code>Gör den mer melankolisk.</code></pre>
-                        <p class="font-semibold text-sm mt-4">Fler ämnen att testa:</p>
-                        <div class="grid grid-cols-2 gap-2 mt-2 text-sm">
-                            <pre class="prompt-block p-2 rounded"><code>Nyfött barn</code></pre>
-                            <pre class="prompt-block p-2 rounded"><code>Öl</code></pre>
-                            <pre class="prompt-block p-2 rounded"><code>Sommarregn</code></pre>
-                            <pre class="prompt-block p-2 rounded"><code>Måndag morgon</code></pre>
-                            <pre class="prompt-block p-2 rounded"><code>Fikapaus</code></pre>
-                            <pre class="prompt-block p-2 rounded"><code>En deadline</code></pre>
-                            <pre class="prompt-block p-2 rounded"><code>Fotboll</code></pre>
-                            <pre class="prompt-block p-2 rounded"><code>Tomt klassrum</code></pre>
-                            <pre class="prompt-block p-2 rounded"><code>Kärlek</code></pre>
-                            <pre class="prompt-block p-2 rounded"><code>En vän</code></pre>
-                            <pre class="prompt-block p-2 rounded"><code>Tystnad</code></pre>
-                            <pre class="prompt-block p-2 rounded"><code>Havet</code></pre>
-                             <pre class="prompt-block p-2 rounded"><code>En dröm</code></pre>
-                        </div>
-                    </div>
+                    <div class="border border-gray-200 rounded-lg p-4 flex flex-col"><h3 class="font-bold text-lg mb-2">A) Haiku-mästaren</h3><p class="text-sm text-gray-600 mb-4 flex-grow">Se hur AI hanterar strikta kreativa ramar (5-7-5 stavelser).</p><p class="font-semibold text-sm">Exempel:</p><pre class="prompt-block p-3 rounded text-sm my-2"><code>Skriv en haiku om kaffe.</code></pre><pre class="prompt-block p-3 rounded text-sm my-2"><code>Gör den mer melankolisk.</code></pre><p class="font-semibold text-sm mt-4">Fler ämnen att testa:</p><div class="grid grid-cols-2 gap-2 mt-2 text-sm"><pre class="prompt-block p-2 rounded"><code>Nyfött barn</code></pre><pre class="prompt-block p-2 rounded"><code>Öl</code></pre><pre class="prompt-block p-2 rounded"><code>Sommarregn</code></pre><pre class="prompt-block p-2 rounded"><code>Måndag morgon</code></pre><pre class="prompt-block p-2 rounded"><code>Fikapaus</code></pre><pre class="prompt-block p-2 rounded"><code>En deadline</code></pre><pre class="prompt-block p-2 rounded"><code>Fotboll</code></pre><pre class="prompt-block p-2 rounded"><code>Tomt klassrum</code></pre><pre class="prompt-block p-2 rounded"><code>Kärlek</code></pre><pre class="prompt-block p-2 rounded"><code>En vän</code></pre><pre class="prompt-block p-2 rounded"><code>Tystnad</code></pre><pre class="prompt-block p-2 rounded"><code>Havet</code></pre><pre class="prompt-block p-2 rounded"><code>En dröm</code></pre></div></div>
                     <div class="border border-gray-200 rounded-lg p-4 flex flex-col"><h3 class="font-bold text-lg mb-2">B) Den osannolika jobbannonsen</h3><p class="text-sm text-gray-600 mb-4 flex-grow">Träna på att ge AI:n en specifik roll och tydliga krav.</p><p class="font-semibold text-sm">Exempel 1:</p><pre class="prompt-block p-3 rounded text-sm my-2"><code>Skriv en jobbannons där Pippi Långstrump söker en ny "sakletare".</code></pre><pre class="prompt-block p-3 rounded text-sm my-2"><code>Gör om den till ett "peppigt" inlägg för LinkedIn.</code></pre><p class="font-semibold text-sm mt-4">Exempel 2:</p><pre class="prompt-block p-3 rounded text-sm my-2"><code>Skriv en platsannons där Sherlock Holmes söker en ny assistent. Kvalifikationer: skarp observationsförmåga och hög tolerans för excentriskt beteende.</code></pre><pre class="prompt-block p-3 rounded text-sm my-2"><code>Skriv om annonsen så den låter som en kontaktannons.</code></pre><p class="font-semibold text-sm mt-4">Exempel 3:</p><pre class="prompt-block p-3 rounded text-sm my-2"><code>Agera rekryterare åt Ronja Rövardotter. Skapa en annons för en ny "rövarsyster" eller "rövarbror" till Mattisborgen.</code></pre><pre class="prompt-block p-3 rounded text-sm my-2"><code>Skriv om annonsen som om den vore en broschyr för en äventyrsresa.</code></pre></div>
                     <div class="border border-gray-200 rounded-lg p-4 flex flex-col"><h3 class="font-bold text-lg mb-2">C) Expert-panelen</h3><p class="text-sm text-gray-600 mb-4 flex-grow">Uppleva hur AI kan generera olika perspektiv på samma fråga.</p><p class="font-semibold text-sm">Exempel 1:</p><pre class="prompt-block p-3 rounded text-sm my-2"><code>Hur skapar jag ett prov som är både rättvist och mäter djupare förståelse? Svara som en erfaren pedagogisk forskare.</code></pre><pre class="prompt-block p-3 rounded text-sm my-2"><code>Svara nu på samma fråga, men som en pragmatisk och tidspressad lärare som vill ha konkreta tips.</code></pre><p class="font-semibold text-sm mt-4">Exempel 2:</p><pre class="prompt-block p-3 rounded text-sm my-2"><code>Hur hanterar jag en situation där en elevs motivation är på botten? Svara som en skolkurator med fokus på empati.</code></pre><pre class="prompt-block p-3 rounded text-sm my-2"><code>Svara nu som en resultatinriktad idrottscoach.</code></pre><p class="font-semibold text-sm mt-4">Exempel 3:</p><pre class="prompt-block p-3 rounded text-sm my-2"><code>Hur ger jag feedback som är både ärlig och uppmuntrande? Svara som en retorikkonsult.</code></pre><pre class="prompt-block p-3 rounded text-sm my-2"><code>Svara nu på samma fråga, men som en erfaren psykolog specialiserad på "growth mindset".</code></pre></div>
                 </div>
@@ -125,17 +103,17 @@
         </section>
 
         <section id="exercise2" class="my-16">
-            <h2><span class="bg-gray-700 text-white rounded-full h-10 w-10 flex items-center justify-center flex-shrink-0 mr-4">2</span>Övning 2: Sago-generatorn</h2>
+            <h2 class="section-title text-2xl md:text-3xl"><span class="bg-gray-700 text-white rounded-full h-10 w-10 flex items-center justify-center flex-shrink-0 mr-4">2</span>Övning 2: Sago-generatorn</h2>
             <div class="bg-white p-6 rounded-lg shadow-md"><p class="font-semibold">Syfte:</p><p class="mb-4">Att förstå iterativ promptning – att bygga vidare på en idé steg-för-steg.</p><p class="font-semibold">Instruktion:</p><p class="mb-6">Följ stegen för att skapa och förvandla en saga.</p><div class="space-y-8"><div class="flex items-start"><div class="h-8 w-8 rounded-full bg-gray-700 text-white flex items-center justify-center font-bold flex-shrink-0 mr-4">1</div><div><h3 class="font-bold">Skapa sagan</h3><p class="text-sm text-gray-600 mb-2">Börja med en grundläggande idé och ge AI:n alla viktiga detaljer.</p><pre class="prompt-block p-3 rounded text-sm"><code>Kan du skriva en kort saga till min systerson, han fyller fem år. Wilhelm gillar verkligen Lego och lyftkranar, kan du få med det? Och inte för lång. 150 ord räcker.</code></pre></div></div><div class="flex items-start"><div class="h-8 w-8 rounded-full bg-gray-700 text-white flex items-center justify-center font-bold flex-shrink-0 mr-4">2</div><div><h3 class="font-bold">Öka komplexiteten</h3><p class="text-sm text-gray-600 mb-2">Lägg till nya element och be AI:n att integrera dem i den befintliga berättelsen.</p><pre class="prompt-block p-3 rounded text-sm"><code>Helt fantastiskt. Tack så mycket. Det behövs en helikopter också. Och det vore bra om lyftkranen fick plåster.</code></pre></div></div><div class="flex items-start"><div class="h-8 w-8 rounded-full bg-gray-700 text-white flex items-center justify-center font-bold flex-shrink-0 mr-4">3</div><div><h3 class="font-bold">Ändra stilen</h3><p class="text-sm text-gray-600 mb-2">Behåll innehållet men be AI:n att anta en specifik författarstil.</p><pre class="prompt-block p-3 rounded text-sm"><code>Härligt. Du är nu HC Andersen. Skriv sagan igen.</code></pre></div></div><div class="flex items-start"><div class="h-8 w-8 rounded-full bg-gray-700 text-white flex items-center justify-center font-bold flex-shrink-0 mr-4">4</div><div><h3 class="font-bold">Spåra ur</h3><p class="text-sm text-gray-600 mb-2">Testa AI:ns kreativa gränser med helt oväntade kombinationer.</p><pre class="prompt-block p-3 rounded text-sm"><code>Jättesnällt. Du är fortfarande HC Andersen. Men hur skulle du skrivit sagan om du precis hade sett Star Wars och älskat den?</code></pre></div></div></div></div>
         </section>
 
         <section id="exercise3" class="my-16">
-            <h2 class="text-2xl md:text-3xl"><span class="bg-gray-700 text-white rounded-full h-10 w-10 flex items-center justify-center flex-shrink-0 mr-4">3</span>Övning 3: Tal-verkstaden</h2>
+            <h2 class="section-title text-2xl md:text-3xl"><span class="bg-gray-700 text-white rounded-full h-10 w-10 flex items-center justify-center flex-shrink-0 mr-4">3</span>Övning 3: Tal-verkstaden</h2>
              <div class="bg-white p-6 rounded-lg shadow-md"><p class="font-semibold">Syfte:</p><p class="mb-4">Anpassa en text för en specifik ton och målgrupp.</p><p class="font-semibold">Instruktion:</p><p class="mb-6">Arbeta i par. Intervjua varandra och använd sedan AI för att skapa och förfina ett tacktal till din kollega.</p><div><h3 class="font-semibold mb-2">Exempel på startprompt:</h3><pre class="prompt-block p-3 rounded text-sm"><code>Skriv ett kort, varmt och humoristiskt tacktal till min kollega [Namn]. Hen är [ämne]-lärare och är otroligt bra på [specifik egenskap]...</code></pre></div><div class="mt-4"><h3 class="font-semibold mb-2">Exempel på förfiningsprompter:</h3><div class="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-2 text-sm"><pre class="prompt-block p-2 rounded"><code>Gör det ännu roligare.</code></pre><pre class="prompt-block p-2 rounded"><code>Sammanfatta talets kärna som en limerick.</code></pre><pre class="prompt-block p-2 rounded"><code>Väva in ett känt citat om [ämnet].</code></pre><pre class="prompt-block p-2 rounded"><code>Lägg till en överdriven liknelse.</code></pre><pre class="prompt-block p-2 rounded"><code>Skriv om det så att det passar som en motivering för ett lönelyft.</code></pre><pre class="prompt-block p-2 rounded"><code>Gör det kortare, max 50 ord.</code></pre><pre class="prompt-block p-2 rounded"><code>Gör det mer högtidligt och formellt.</code></pre><pre class="prompt-block p-2 rounded"><code>Lägg till en uppmaning till publiken.</code></pre></div></div></div>
         </section>
 
         <section id="exercise4" class="my-16">
-            <h2 class="text-2xl md:text-3xl"><span class="bg-gray-700 text-white rounded-full h-10 w-10 flex items-center justify-center flex-shrink-0 mr-4">4</span>Övning 4: Text-transformatorn</h2>
+            <h2 class="section-title text-2xl md:text-3xl"><span class="bg-gray-700 text-white rounded-full h-10 w-10 flex items-center justify-center flex-shrink-0 mr-4">4</span>Övning 4: Text-transformatorn</h2>
             <div class="bg-white p-6 rounded-lg shadow-md">
                 <p class="mb-4">I den här praktiska övningen får du chansen att utforska hur en språkmodell som ChatGPT kan användas som en kreativ partner för att utveckla, analysera och omforma texter. Målet är inte att hitta ett "rätt" svar, utan att uppleva och reflektera över de möjligheter som tekniken erbjuder i din yrkesroll.</p>
                 <div class="space-y-6">
@@ -185,7 +163,7 @@
         </section>
 
         <section id="exercise5" class="my-16">
-            <h2><span class="bg-gray-700 text-white rounded-full h-10 w-10 flex items-center justify-center flex-shrink-0 mr-4">5</span>Övning 5: Från Styrdokument till Praktik</h2>
+            <h2 class="section-title text-2xl md:text-3xl"><span class="bg-gray-700 text-white rounded-full h-10 w-10 flex items-center justify-center flex-shrink-0 mr-4">5</span>Övning 5: Från Styrdokument till Praktik</h2>
              <div class="bg-white p-6 rounded-lg shadow-md">
                 <p class="font-semibold">Syfte:</p>
                 <p class="mb-4">Att omvandla abstrakt text från styrdokument (som Centralt innehåll) till konkreta, undervisningsbara teman och aktiviteter.</p>
@@ -209,7 +187,7 @@
         </section>
         
         <section id="exercise6" class="my-16">
-            <h2 class="text-2xl md:text-3xl"><span class="bg-gray-700 text-white rounded-full h-10 w-10 flex items-center justify-center flex-shrink-0 mr-4">6</span>Övning 6: Metafor-verkstaden</h2>
+            <h2 class="section-title text-2xl md:text-3xl"><span class="bg-gray-700 text-white rounded-full h-10 w-10 flex items-center justify-center flex-shrink-0 mr-4">6</span>Övning 6: Metafor-verkstaden</h2>
             <div class="bg-white p-6 rounded-lg shadow-md">
                 <p class="font-semibold">Syfte:</p>
                 <p class="mb-4">Att träna på att använda AI för att skapa pedagogiska liknelser och metaforer som förenklar komplexa koncept för elever.</p>
@@ -244,7 +222,7 @@
         </section>
 
         <section id="exercise7" class="my-16">
-            <h2 class="text-2xl md:text-3xl"><span class="bg-gray-700 text-white rounded-full h-10 w-10 flex items-center justify-center flex-shrink-0 mr-4">7</span>Övning 7: LEKTION-ramverket</h2>
+            <h2 class="section-title text-2xl md:text-3xl"><span class="bg-gray-700 text-white rounded-full h-10 w-10 flex items-center justify-center flex-shrink-0 mr-4">7</span>Övning 7: LEKTION-ramverket</h2>
             <div class="bg-white p-6 rounded-lg shadow-md">
                 <p class="font-semibold">Syfte:</p><p class="mb-4">Använda avancerade strukturer för att skapa komplexa och högkvalitativa lektionsplaner.</p><p class="font-semibold">Instruktion:</p><p class="mb-6">Studera ramverken och använd sedan hjälpprompten för att skapa en egen lektionsplan.</p>
                 <div class="bg-gray-50 border border-gray-200 rounded-lg p-6 mb-6">
@@ -301,7 +279,7 @@
         </section>
 
         <section id="exercise8" class="my-16">
-            <h2 class="text-2xl md:text-3xl"><span class="bg-gray-700 text-white rounded-full h-10 w-10 flex items-center justify-center flex-shrink-0 mr-4">8</span>Övning 8: Skapa ett Lektionsblock</h2>
+            <h2 class="section-title text-2xl md:text-3xl"><span class="bg-gray-700 text-white rounded-full h-10 w-10 flex items-center justify-center flex-shrink-0 mr-4">8</span>Övning 8: Skapa ett Lektionsblock</h2>
             <div class="bg-white p-6 rounded-lg shadow-md">
                 <p class="font-semibold">Syfte:</p><p class="mb-4">Använda ett avancerat ramverk för att planera ett helt, sammanhängande lektionsblock med en tydlig röd tråd.</p><p class="font-semibold">Instruktion:</p><p class="mb-6">Använd hjälpprompten nedan för att skapa en serie av fyra lektioner. Kopiera hela texten och byt ut informationen inom hakparenteserna `[]`.</p>
                 <div class="border-2 border-dashed border-gray-400 rounded-lg p-6">
@@ -318,7 +296,7 @@
         </section>
 
         <section id="bonustips" class="my-16">
-            <h2 class="text-2xl md:text-3xl">Bonustips: Från Lektionsplan till Presentation</h2>
+            <h2 class="section-title text-2xl md:text-3xl">Bonustips: Från Lektionsplan till Presentation</h2>
             <div class="bg-white p-6 rounded-lg shadow-md">
                 <p class="font-semibold">Syfte:</p>
                 <p class="mb-4">Att snabbt omvandla en textbaserad lektionsplan till ett komplett, visuellt presentationsunderlag.</p>
@@ -335,7 +313,7 @@
         </section>
 
         <section id="bonustips2" class="my-16">
-            <h2 class="text-2xl md:text-3xl">Bonustips 2: Från Lektionsplan till Interaktiv Webbapplikation</h2>
+            <h2 class="section-title text-2xl md:text-3xl">Bonustips 2: Från Lektionsplan till Interaktiv Webbapplikation</h2>
             <div class="bg-white p-6 rounded-lg shadow-md">
                 <p class="font-semibold">Syfte:</p>
                 <p class="mb-4">Att omvandla en lektionsplan till en komplett, interaktiv och visuellt engagerande webbsida i en enda, enkel HTML-fil.</p>
@@ -419,7 +397,7 @@
             'El & Energi': `Agera som en expert inom pedagogik och didaktik, med specialisering på Elteknik. Ditt uppdrag är att skapa ett sammanhängande och robust lektionsblock bestående av fyra lektioner för gymnasiet, baserat på följande information.<br><br>**DEL A: ÖVERGRIPANDE INFORMATION FÖR HELA BLOCKET**<br><br>Kurs: Elinstallationer<br>Övergripande Tema för Blocket: Installation av ett vägguttag<br>Målgrupp: Åk 2, har teoretiska kunskaper om kretsar men behöver praktisk övning.<br>Den Röda Tråden (Blockets Huvudmål): Att på ett säkert och fackmannamässigt sätt kunna genomföra en hel installation, från planering och kabeldragning till inkoppling och kontroll.<br><br>${genericDel6}`,
             'Fordons- & Transport': `Agera som en expert inom pedagogik och didaktik, med specialisering på Fordonsteknik och transport. Ditt uppdrag är att skapa ett sammanhängande och robust lektionsblock bestående av fyra lektioner för gymnasiet, baserat på följande information.<br><br>**DEL A: ÖVERGRIPANDE INFORMATION FÖR HELA BLOCKET**<br><br>Kurs: Lastbilskörning och logistik<br>Övergripande Tema för Blocket: Säker lastning och lastsäkring<br>Målgrupp: Åk 3, förbereder sig för YKB (Yrkeskompetensbevis).<br>Den Röda Tråden (Blockets Huvudmål): Från att förstå de fysikaliska krafterna vid transport till att praktiskt kunna planera och utföra en korrekt lastsäkring enligt lagkrav.<br><br>${genericDel6}`,
             'Industritekniska': `Agera som en expert inom pedagogik och didaktik, med specialisering på Industriteknik. Ditt uppdrag är att skapa ett sammanhängande och robust lektionsblock bestående av fyra lektioner för gymnasiet, baserat på följande information.<br><br>**DEL A: ÖVERGRIPANDE INFORMATION FÖR HELA BLOCKET**<br><br>Kurs: Mät- och provningsteknik<br>Övergripande Tema för Blocket: Kvalitetssäkring med digitalt skjutmått och mikrometer<br>Målgrupp: Åk 2, har grundläggande ritningsläsning.<br>Den Röda Tråden (Blockets Huvudmål): Att förstå vikten av precision och toleranser, och att korrekt kunna använda och avläsa digitala mätverktyg för att kontrollera en tillverkad detalj mot en ritning.<br><br>${genericDel6}`,
-            'Introduktion': `Agera som en expert inom pedagogik och didaktik, med specialisering på Svenska som andraspråk och samhällsorientering. Ditt uppdrag är att skapa ett sammanhängande och robust lektionsblock bestående av fyra lektioner för gymnasiet, baserat på följande information.<br><br>**DEL A: ÖVERGRIPANDE INFORMATION FÖR HELA BLOCKET**<br><br>Kurs: Samhällsorientering för IM<br>Övergripande Tema för Blocket: Hitta i din nya stad<br>Målgrupp: Nyanlända ungdomar, varierande språkbakgrund.<br>Den Röda Tråden (Blockets Huvudmål): Att ge eleverna de grundläggande verktyg och det ordförråd som behövs för att självständigt kunna navigera i sin lokala miljö med hjälp av kollektivtrafik och digitala kartor.<br><br>${genericDel6}`,
+            'Introduktion': `Agera som en expert inom pedagogik och didaktik, med specialisering på Svenska som andraspråk och samhällsorientering. Ditt uppdrag är att skapa ett sammanhängande och robust lektionsblock bestående av fyra lektioner för gymnasiet, baserat på följande information.<br><br>**DEL A: ÖVERGRIPANDE INFORMATION FÖR HELA BLOCKET**<br><br>Kurs: Samhällsorientering för IM<br>Målgrupp: Nyanlända ungdomar, varierande språkbakgrund.<br>Den Röda Tråden (Blockets Huvudmål): Att ge eleverna de grundläggande verktyg och det ordförråd som behövs för att självständigt kunna navigera i sin lokala miljö med hjälp av kollektivtrafik och digitala kartor.<br><br>${genericDel6}`,
             'Naturvetenskap': `Agera som en expert inom pedagogik och didaktik, med specialisering på Kemi. Ditt uppdrag är att skapa ett sammanhängande och robust lektionsblock bestående av fyra lektioner för gymnasiet, baserat på följande information.<br><br>**DEL A: ÖVERGRIPANDE INFORMATION FÖR HELA BLOCKET**<br><br>Kurs: Kemi 1<br>Övergripande Tema för Blocket: Stökiometri - Konsten att räkna på kemiska reaktioner<br>Målgrupp: Åk 1, har grundläggande kunskap om atomer, molekyler och det periodiska systemet.<br>Den Röda Tråden (Blockets Huvudmål): Från att förstå molbegreppet till att självständigt kunna balansera en reaktionsformel och beräkna massan av produkter från en given mängd reaktanter.<br><br>${genericDel6}`,
             'Samhällskunskap': `Agera som en expert inom pedagogik och didaktik, med specialisering på Internationella relationer. Ditt uppdrag är att skapa ett sammanhängande och robust lektionsblock bestående av fyra lektioner för gymnasiet, baserat på följande information.<br><br>**DEL A: ÖVERGRIPANDE INFORMATION FÖR HELA BLOCKET**<br><br>Kurs: Internationella relationer<br>Övergripande Tema för Blocket: Konflikten mellan Israel och Palestina<br>Målgrupp: Åk 3, har goda kunskaper i historia och samhällskunskap.<br>Den Röda Tråden (Blockets Huvudmål): Att ge eleverna en djupare, nyanserad förståelse för konfliktens historiska rötter, centrala aktörer och de huvudsakliga hindren för en fredlig lösning, med fokus på multiperspektivitet.<br><br>${genericDel6}`,
             'Teknik': `Agera som en expert inom pedagogik och didaktik, med specialisering på Teknikutveckling och programmering. Ditt uppdrag är att skapa ett sammanhängande och robust lektionsblock bestående av fyra lektioner för gymnasiet, baserat på följande information.<br><br>**DEL A: ÖVERGRIPANDE INFORMATION FÖR HELA BLOCKET**<br><br>Kurs: Programmering 1<br>Övergripande Tema för Blocket: Introduktion till Python med Turtle-grafik<br>Målgrupp: Åk 1, inga förkunskaper i programmering krävs.<br>Den Röda Tråden (Blockets Huvudmål): Att ge eleverna en visuell och engagerande introduktion till grundläggande programmeringskoncept (sekvens, loopar, variabler) genom att rita figurer med Turtle-biblioteket.<br><br>${genericDel6}`
@@ -458,24 +436,19 @@
 
                 const targetId = button.dataset.target;
                 const content = document.querySelector(targetId);
-                const allButtons = buttonContainer.querySelectorAll('.accordion-button');
-                const allContent = contentContainer.querySelectorAll('.accordion-content');
+                const allButtons = Array.from(buttonContainer.querySelectorAll('.accordion-button'));
+                const allContent = Array.from(contentContainer.querySelectorAll('.accordion-content'));
                 
-                let isActive = button.classList.contains('active');
+                const isActive = button.classList.contains('active');
 
-                // Close all others
-                allContent.forEach(item => {
-                    if(item !== content) {
-                       item.style.maxHeight = null;
-                    }
-                });
-                 allButtons.forEach(btn => {
-                    if(btn !== button) {
-                       btn.classList.remove('active');
+                allButtons.forEach(btn => {
+                    if (btn !== button) {
+                        btn.classList.remove('active');
+                        const otherContent = document.querySelector(btn.dataset.target);
+                        if (otherContent) otherContent.style.maxHeight = null;
                     }
                 });
 
-                // Toggle current
                 if (isActive) {
                     content.style.maxHeight = null;
                     button.classList.remove('active');
